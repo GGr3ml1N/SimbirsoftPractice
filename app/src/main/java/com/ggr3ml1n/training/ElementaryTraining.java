@@ -67,8 +67,7 @@ public class ElementaryTraining {
         if (value <= 99999) {
             String number = String.valueOf(value);
             number = number.substring(number.length()-1) + number.substring(1, number.length() -1) + number.substring(0,1);
-            int newValue = Integer.parseInt(number);
-            return newValue;
+            return Integer.parseInt(number);
         } else {
             return 0;
         }
@@ -85,12 +84,9 @@ public class ElementaryTraining {
      * @return новое число
      */
     public int zeroEvenNumber(int value) {
-        if (value < 10) {
-            return value;
-        }
-        if (value <= 99999) {
+        if (value <= 99999 && value > 10) {
             char[] number = String.valueOf(value).toCharArray();
-            for (int i = 0; i < number.length; i++) {
+            for (int i = 1; i < number.length; i++) {
                 if (number[i] % 2 == 0) {
                     number[i] = '0';
                 }
@@ -98,7 +94,7 @@ public class ElementaryTraining {
             String newValue = String.valueOf(number);
             return Integer.parseInt(newValue);
         } else {
-            return 0;
+            return value;
         }
     }
 }
