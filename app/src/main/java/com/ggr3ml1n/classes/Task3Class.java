@@ -16,9 +16,9 @@ public class Task3Class {
     private Coordinate c1;
 
     public Task3Class(int a, int b, int c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        setA(a);
+        setB(b);
+        setC(c);
     }
 
     public Task3Class(Coordinate a, Coordinate b, Coordinate c) {
