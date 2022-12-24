@@ -34,12 +34,12 @@ public class Task1Class{
     }
 
     //Функция нахождения суммы
-    public int getSum(){
+    public int getSum() {
         return variable1 + variable2;
     }
 
     //Функция нахождения максимума из двух переменных
-    public int getMax(){
+    public int getMax() {
         return Math.max(variable1, variable2);
     }
 }
