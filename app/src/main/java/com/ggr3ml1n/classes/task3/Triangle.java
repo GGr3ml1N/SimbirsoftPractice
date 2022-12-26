@@ -1,4 +1,4 @@
-package com.ggr3ml1n.classes;
+package com.ggr3ml1n.classes.task3;
 
 /*
       III
@@ -7,7 +7,7 @@ package com.ggr3ml1n.classes;
       вычисления площади, периметра и точки пересечения медиан.
       Описать свойства для получения состояния объекта.
      */
-public class Task3Class {
+public class Triangle {
     private double a;
     private double b;
     private double c;
@@ -15,13 +15,13 @@ public class Task3Class {
     private Coordinate b1;
     private Coordinate c1;
 
-    public Task3Class(int a, int b, int c) {
+    public Triangle(int a, int b, int c) {
         setA(a);
         setB(b);
         setC(c);
     }
 
-    public Task3Class(Coordinate a, Coordinate b, Coordinate c) {
+    public Triangle(Coordinate a, Coordinate b, Coordinate c) {
         a1 = a;
         b1 = b;
         c1 = c;

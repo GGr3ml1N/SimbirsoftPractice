@@ -1,10 +1,23 @@
-package com.ggr3ml1n.classes;
+package com.ggr3ml1n.classes.task5;
+
+import com.ggr3ml1n.classes.task4.Time;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Task5Class {
+/*
+      V
+
+      Класс Абонент: Идентификационный номер, Фамилия, Имя, Отчество, Адрес,
+      Номер кредитной карточки, Дебет, Кредит, Время междугородных и городских переговоров;
+      Конструктор; Методы: установка значений атрибутов, получение значений атрибутов,
+      вывод информации. Создать массив объектов данного класса.
+      Вывести сведения относительно абонентов, у которых время городских переговоров
+      превышает заданное.  Сведения относительно абонентов, которые пользовались
+      междугородной связью. Список абонентов в алфавитном порядке.
+     */
+public class Caller {
     int id;
     String lastName;
     String firstName;
@@ -13,14 +26,14 @@ public class Task5Class {
     int cardNumber;
     int debit;
     int credit;
-    Task4Class timeOfLDN;
-    Task4Class timeOfCityN;
+    Time timeOfLDN;
+    Time timeOfCityN;
 
-    public Task5Class(int id,
-                      String lastName, String firstName, String patronymic,
-                      String address, int cardNumber,
-                      int debit, int credit,
-                      Task4Class timeOfLDN, Task4Class timeOfCityN) {
+    public Caller(int id,
+                  String lastName, String firstName, String patronymic,
+                  String address, int cardNumber,
+                  int debit, int credit,
+                  Time timeOfLDN, Time timeOfCityN) {
         setId(id);
         setLastName(lastName);
         setFirstName(firstName);
@@ -33,12 +46,12 @@ public class Task5Class {
         setTimeOfCityN(timeOfCityN);
     }
 
-    public Task5Class() {
+    public Caller() {
         this(0,
                 "Ivanov", "Ivan", "Ivanovich",
                 "Moskva, Pushkina, 1", 123456789,
                 0, 0,
-                new Task4Class(0, 0, 0), new Task4Class(0, 0, 0));
+                new Time(0, 0, 0), new Time(0, 0, 0));
     }
 
     public int getId() {
@@ -113,26 +126,26 @@ public class Task5Class {
         this.credit = credit;
     }
 
-    public Task4Class getTimeOfLDN() {
+    public Time getTimeOfLDN() {
         return timeOfLDN;
     }
 
-    public void setTimeOfLDN(Task4Class timeOfLDN) {
+    public void setTimeOfLDN(Time timeOfLDN) {
         this.timeOfLDN = timeOfLDN;
     }
 
-    public Task4Class getTimeOfCityN() {
+    public Time getTimeOfCityN() {
         return timeOfCityN;
     }
 
-    public void setTimeOfCityN(Task4Class timeOfCityN) {
+    public void setTimeOfCityN(Time timeOfCityN) {
         this.timeOfCityN = timeOfCityN;
     }
 
-    public static void listOfCallersIncreasingLDConversation(Task4Class time, Task5Class... callers) {
-        ArrayList<Task5Class> listOfCallers = new ArrayList<>(Arrays.asList(callers));
+    public static void listOfCallersIncreasingLDConversation(Time time, Caller... callers) {
+        ArrayList<Caller> listOfCallers = new ArrayList<>(Arrays.asList(callers));
 
-        for (Task5Class caller : listOfCallers) {
+        for (Caller caller : listOfCallers) {
             if (caller.timeOfLDN.formatToSeconds().getTimeInSeconds() > time.formatToSeconds().getTimeInSeconds()) {
                 System.out.println(caller);
             }
@@ -140,21 +153,21 @@ public class Task5Class {
 
     }
 
-    public static void listOfCallersWhoUsedLDConversation(Task5Class... callers) {
-        ArrayList<Task5Class> listOfCallers = new ArrayList<>(Arrays.asList(callers));
+    public static void listOfCallersWhoUsedLDConversation(Caller... callers) {
+        ArrayList<Caller> listOfCallers = new ArrayList<>(Arrays.asList(callers));
 
-        for (Task5Class caller : listOfCallers) {
+        for (Caller caller : listOfCallers) {
             if (caller.timeOfLDN.formatToSeconds().getTimeInSeconds() > 0) {
                 System.out.println(caller);
             }
         }
     }
 
-    public static void sortedListOfCallers(Task5Class... callers) {
-        ArrayList<Task5Class> listOfCallers = new ArrayList<>(Arrays.asList(callers));
-        listOfCallers.sort(Comparator.comparing(Task5Class::getLastName));
+    public static void sortedListOfCallers(Caller... callers) {
+        ArrayList<Caller> listOfCallers = new ArrayList<>(Arrays.asList(callers));
+        listOfCallers.sort(Comparator.comparing(Caller::getLastName));
 
-        for (Task5Class caller : listOfCallers) {
+        for (Caller caller : listOfCallers) {
             System.out.println(caller);
         }
     }

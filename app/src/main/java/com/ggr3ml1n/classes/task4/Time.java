@@ -1,4 +1,4 @@
-package com.ggr3ml1n.classes;
+package com.ggr3ml1n.classes.task4;
 
 /*
       IV
@@ -9,28 +9,28 @@ package com.ggr3ml1n.classes;
       В случае недопустимых значений полей выбрасываются исключения.
       Создать методы изменения времени на заданное количество часов, минут и секунд.
      */
-public class Task4Class {
+public class Time {
     private int seconds;
     private int minutes;
     private int hours;
 
     private int timeInSeconds;
 
-    public Task4Class(int hours, int minutes, int seconds) {
+    public Time(int hours, int minutes, int seconds) {
         setHours(hours);
         setMinutes(minutes);
         setSeconds(seconds);
     }
 
-    public Task4Class() {
+    public Time() {
         this(0, 0, 0);
     }
 
-    public Task4Class(int seconds) {
+    public Time(int seconds) {
         setTimeInSeconds(seconds);
     }
 
-    public Task4Class(int hours, int minutes) {
+    public Time(int hours, int minutes) {
         this(hours, minutes, 0);
     }
 
@@ -103,8 +103,8 @@ public class Task4Class {
         this.hours = this.hours / 24;
     }
 
-    public Task4Class formatToSeconds() {
-       return new Task4Class(seconds + minutes * 60 + hours * 3600);
+    public Time formatToSeconds() {
+       return new Time(seconds + minutes * 60 + hours * 3600);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.ggr3ml1n.classes;
+package com.ggr3ml1n.classes.task3;
 
 public class Coordinate {
     int x;

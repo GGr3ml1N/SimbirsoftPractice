@@ -1,4 +1,4 @@
-package com.ggr3ml1n.classes;
+package com.ggr3ml1n.classes.task1;
 
 /*
   Создать класс с двумя переменными. Добавить функцию вывода на экран
@@ -6,7 +6,7 @@ package com.ggr3ml1n.classes;
   сумму значений этих переменных, и функцию, которая находит наибольшее
   значение из этих двух переменных.
  */
-public class Task1Class{
+public class Variables {
 
     //Две переменные
     private int variable1;

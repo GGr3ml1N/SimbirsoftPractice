@@ -1,4 +1,4 @@
-package com.ggr3ml1n.classes;
+package com.ggr3ml1n.classes.task2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,12 +12,12 @@ import java.util.Objects;
       переставлять в данном массиве элементы в случайном порядке, находить количество
       различных элементов в массиве, выводить массив на экран.
  */
-public class Task2Class {
+public class DynamicArray {
 
     private ArrayList<Integer> dynamicArray;
     private int size;
 
-    public Task2Class(int size) {
+    public DynamicArray(int size) {
         dynamicArray = new ArrayList<>(size);
         this.size = size;
     }
