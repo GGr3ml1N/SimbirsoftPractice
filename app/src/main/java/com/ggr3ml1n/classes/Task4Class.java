@@ -14,6 +14,8 @@ public class Task4Class {
     private int minutes;
     private int hours;
 
+    private int timeInSeconds;
+
     public Task4Class(int hours, int minutes, int seconds) {
         setHours(hours);
         setMinutes(minutes);
@@ -25,7 +27,7 @@ public class Task4Class {
     }
 
     public Task4Class(int seconds) {
-        this(0, 0, seconds);
+        setTimeInSeconds(seconds);
     }
 
     public Task4Class(int hours, int minutes) {
@@ -69,6 +71,26 @@ public class Task4Class {
         }
     }
 
+    public int getTimeInSeconds() {
+        return timeInSeconds;
+    }
+
+    public void setTimeInSeconds(int timeInSeconds) {
+        if (timeInSeconds < 0) {
+            throw new IllegalArgumentException();
+        } else {
+            this.timeInSeconds = timeInSeconds;
+        }
+    }
+
+    public void addMinutes(int minutes) {
+        addSeconds(minutes * 60);
+    }
+
+    public void addHours(int hours) {
+        addSeconds(hours * 3600);
+    }
+
     public void addSeconds(int seconds) {
         this.seconds += seconds;
 
@@ -81,16 +103,13 @@ public class Task4Class {
         this.hours = this.hours / 24;
     }
 
-    public void addMinutes(int minutes) {
-        addSeconds(minutes * 60);
-    }
-
-    public void addHours(int hours) {
-        addSeconds(hours * 3600);
+    public Task4Class formatToSeconds() {
+       return new Task4Class(seconds + minutes * 60 + hours * 3600);
     }
 
     @Override
     public String toString() {
-        return "hh:mm:ss" + hours + ":" + minutes + ":" + seconds;
+        return "hh:mm:ss " + hours + ":" + minutes + ":" + seconds;
     }
 }
+
