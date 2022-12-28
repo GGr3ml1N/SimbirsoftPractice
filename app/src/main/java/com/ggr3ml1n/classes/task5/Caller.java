@@ -18,16 +18,16 @@ import java.util.Comparator;
       междугородной связью. Список абонентов в алфавитном порядке.
      */
 public class Caller {
-    int id;
-    String lastName;
-    String firstName;
-    String patronymic;
-    String address;
-    int cardNumber;
-    int debit;
-    int credit;
-    Time timeOfLDN;
-    Time timeOfCityN;
+    private int id;
+    private String lastName;
+    private String firstName;
+    private String patronymic;
+    private String address;
+    private int cardNumber;
+    private int debit;
+    private int credit;
+    private Time timeOfLDN;
+    private Time timeOfCityN;
 
     public Caller(int id,
                   String lastName, String firstName, String patronymic,
