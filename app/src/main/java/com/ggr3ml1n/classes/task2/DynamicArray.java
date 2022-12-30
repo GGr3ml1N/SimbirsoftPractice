@@ -31,11 +31,7 @@ public class DynamicArray {
     }
 
     public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
+        return dynamicArray.size();
     }
 
     public ArrayList<Integer> fillRandom(int min, int max) {

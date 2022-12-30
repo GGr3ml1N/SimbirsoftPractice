@@ -23,14 +23,12 @@ public class Client {
     }
 
     public void setBalance(double balance) {
-        if (balance <0) throw new IllegalArgumentException();
+        if (balance < 0)
+            throw new IllegalArgumentException();
         this.balance = balance;
     }
 
-    public void makeOrder(Product... products){
+    public void makeOrder(Product... products) {
         order = new Order(Arrays.asList(products));
-
     }
-
-
 }

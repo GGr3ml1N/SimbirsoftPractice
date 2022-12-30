@@ -44,7 +44,7 @@ public class CommodityExpert {
         return blackList;
     }
 
-    public void setBlackList(Client client) {
+    public void addToBlackList(Client client) {
         blackList.add(client);
     }
 
@@ -53,7 +53,7 @@ public class CommodityExpert {
         Sale sale = new Sale(id, order);
         if (sale.getOrder().getTotalPrice() > client.getBalance()) {
             System.out.println("Вы неспособны оплатить товар - лети в бан-лист");
-            setBlackList(client);
+            addToBlackList(client);
         }
         else {
             System.out.println("Оплата успешна");
