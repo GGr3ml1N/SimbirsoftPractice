@@ -5,15 +5,10 @@ package com.ggr3ml1n.practice;
  */
 public class Circle implements Shape {
 
-    private final double PI = 3.14;
     private double radius;
 
     public Circle(double radius){
         setRadius(radius);
-    }
-
-    public double getPI() {
-        return PI;
     }
 
     public double getRadius() {
@@ -27,11 +22,11 @@ public class Circle implements Shape {
 
     @Override
     public double perimeter() {
-        return 2 * PI * radius;
+        return 2 * Math.PI * radius;
     }
 
     @Override
     public double area() {
-        return PI * Math.pow(radius, 2);
+        return Math.PI * Math.pow(radius, 2);
     }
 }
