@@ -11,9 +11,9 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        Lambda lmd = new Lambda();
+        Lambda myClosure = new Lambda();
         Lambda.Operationable operation = () -> Log.d("Lambda", "I Love Java!");
-        lmd.repeatTask(10, operation);
+        myClosure.repeatTask(10, operation);
 
         Directions up = Directions.UP;
         Directions left = Directions.LEFT;
