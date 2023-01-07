@@ -7,8 +7,8 @@ public class Square implements Shape {
 
     private double length;
 
-    public Square(double a){
-        setLength(a);
+    public Square(double length){
+        setLength(length);
     }
 
     public double getLength() {

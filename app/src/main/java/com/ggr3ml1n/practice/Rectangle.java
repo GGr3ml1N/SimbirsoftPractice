@@ -7,9 +7,9 @@ public class Rectangle implements Shape {
     private double length;
     private double width;
 
-    public Rectangle(double a, double b) {
-        setLength(a);
-        setWidth(b);
+    public Rectangle(double length, double width) {
+        setLength(length);
+        setWidth(width);
     }
 
     public double getLength() {
