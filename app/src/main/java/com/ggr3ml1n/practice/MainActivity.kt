@@ -90,24 +90,40 @@ class MainActivity : AppCompatActivity() {
         Log.d("Info", "$nameList")
         Log.d("Info", "${nameList.first()} и ${nameList.last()}")
         
-        user5.check()
-        
-        auth {
-            if (user.age > 18) authCheck.authSuccess() else authCheck.authFailed()
-            updateCache()
+        try {
+            user5.check()
+        } catch (e: Exception) {
+            e.message?.let { Log.d("Info", it) }
         }
         
-        doAction(Action.Registration(user))
-        doAction(Action.Login(user))
-        doAction(Action.Logout(user))
+        auth {
+            try {
+                user5.check()
+                authCheck.authSuccess()
+                updateCache()
+            } catch (e: Exception) {
+                e.message?.let { Log.d("Info", it) }
+                authCheck.authFailed()
+            }
+        }
+        
+        doAction(Registration())
+        doAction(Login(user))
+        doAction(Logout())
     }
     
     private fun doAction(action: Action) {
         when (action) {
-            is Action.Registration -> Log.d("Info", "Registration...")
-            is Action.Login -> auth {
-                if (user.age > 18) authCheck.authSuccess() else authCheck.authFailed()
-                updateCache()
+            is Registration -> Log.d("Info", "Registration...")
+            is Login -> auth {
+                try {
+                    action.user.check()
+                    authCheck.authSuccess()
+                    updateCache()
+                } catch (e: Exception) {
+                    e.message?.let { Log.d("Info", it) }
+                    authCheck.authFailed()
+                }
             }
             else -> Log.d("Info", "Logout...")
             
@@ -115,8 +131,8 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun User.check() {
-        if (this.age < 18)
-            Log.d("Info", "${this.name} очень молод")
+        if (this.age < 18) throw IllegalArgumentException("${this.name} очень молод")
+        else Log.d("Info", "${this.name} старше 18. Ему ${this.age} лет")
     }
     
     private inline fun auth(updateCache: () -> Unit) {
