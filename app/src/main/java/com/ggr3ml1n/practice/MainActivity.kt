@@ -96,34 +96,20 @@ class MainActivity : AppCompatActivity() {
             e.message?.let { Log.d("Info", it) }
         }
         
-        auth {
-            try {
-                user5.check()
-                authCheck.authSuccess()
-                updateCache()
-            } catch (e: Exception) {
-                e.message?.let { Log.d("Info", it) }
-                authCheck.authFailed()
-            }
+        auth(user) {
+            updateCache()
         }
         
-        doAction(Registration())
+        doAction(Registration)
         doAction(Login(user))
-        doAction(Logout())
+        doAction(Logout)
     }
     
     private fun doAction(action: Action) {
         when (action) {
             is Registration -> Log.d("Info", "Registration...")
-            is Login -> auth {
-                try {
-                    action.user.check()
-                    authCheck.authSuccess()
-                    updateCache()
-                } catch (e: Exception) {
-                    e.message?.let { Log.d("Info", it) }
-                    authCheck.authFailed()
-                }
+            is Login -> auth(user) {
+                updateCache()
             }
             else -> Log.d("Info", "Logout...")
             
@@ -135,8 +121,15 @@ class MainActivity : AppCompatActivity() {
         else Log.d("Info", "${this.name} старше 18. Ему ${this.age} лет")
     }
     
-    private inline fun auth(updateCache: () -> Unit) {
-        updateCache()
+    private inline fun auth(user : User, updateCache: () -> Unit) {
+        try {
+            user.check()
+            authCheck.authSuccess()
+            updateCache()
+        } catch (e : Exception) {
+            e.message?.let { Log.d("Info", it) }
+        }
+        
     }
     
     private fun updateCache() {
