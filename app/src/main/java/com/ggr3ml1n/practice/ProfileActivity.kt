@@ -17,6 +17,8 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(findViewById(R.id.toolbar1))
+
+        binding.bottomNavView.selectedItemId = R.id.profile
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
