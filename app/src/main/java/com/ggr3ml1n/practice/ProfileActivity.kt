@@ -17,6 +17,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(findViewById(R.id.toolbar1))
+        supportActionBar?.title = ""
 
         binding.bottomNavView.selectedItemId = R.id.profile
     }

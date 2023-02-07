@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:elevation="0dp">
@@ -38,16 +37,13 @@
                 app:layout_collapseMode="parallax"
                 tools:ignore="ContentDescription" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar1"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/green"
                     android:theme="?attr/actionBarTheme"
+                    android:gravity="center"
                     app:layout_collapseMode="pin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -57,9 +53,8 @@
                     <TextView
                         android:id="@+id/textView"
                         style="@style/TextStyle2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="@string/profile"
                         android:textColor="@color/white"
                         android:textSize="@dimen/title_size"
@@ -67,8 +62,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
                 </androidx.appcompat.widget.Toolbar>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
