@@ -21,8 +21,8 @@
 
             android:fitsSystemWindows="true"
             android:keepScreenOn="true"
-            app:contentScrim="@color/green"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
             app:toolbarId="@+id/toolbar">
 
@@ -175,7 +175,7 @@
                 android:theme="@style/Theme.Practice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_activity"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck,UseSwitchCompatOrMaterialXml" />
 
             <View
                 android:id="@+id/view"
@@ -318,7 +318,8 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="wrap_content"
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:labelVisibilityMode="labeled"
