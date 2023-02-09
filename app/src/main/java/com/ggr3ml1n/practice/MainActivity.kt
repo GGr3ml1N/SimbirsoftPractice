@@ -1,11 +1,138 @@
 package com.ggr3ml1n.practice
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+
+/*
+Создать enum Type с константами DEMO и FULL.
+
+Реализовать класс данных User с полями id, name, age и type.
+У класса User создать ленивое свойство startTime, в котором
+получаем текущее время.
+
+Создать объект класса User, вывести в лог startTime
+данного юзера, после вызвать Thread.sleep(1000) и
+повторно вывести в лог startTime.
+
+Создать список пользователей, содержащий в себе один
+объект класса User. Используя функцию apply, добавить
+ещё несколько объектов класса User в список пользователей.
+
+Получить список пользователей, у которых имеется полный
+доступ (поле type имеет значение FULL).
+
+Преобразовать список User в список имен пользователей.
+Получить первый и последний элементы списка и вывести их в лог.
+
+Создать функцию-расширение класса User, которая проверяет,
+что юзер старше 18 лет, и в случае успеха выводит в лог, а
+в случае неуспеха возвращает ошибку.
+
+Создать интерфейс AuthCallback с методами authSuccess,
+authFailed и реализовать анонимный объект данного интерфейса.
+В методах необходимо вывести в лог информацию о статусе авторизации.
+
+Реализовать inline функцию auth, принимающую в качестве параметра
+функцию updateCache. Функция updateCache должна
+выводить в лог информацию об обновлении кэша.
+
+Внутри функции auth вызвать метод коллбека authSuccess
+и переданный updateCache, если проверка возраста
+пользователя произошла без ошибки. В случае получения
+ошибки вызвать authFailed.
+
+Реализовать изолированный класс Action и его
+наследников – Registration, Login и Logout. Login должен
+принимать в качестве параметра экземпляр класса User.
+
+Реализовать метод doAction, принимающий экземпляр класса Action.
+В зависимости от переданного действия выводить в лог текст,
+к примеру “Auth started”. Для действия Login вызывать метод auth.
+ */
 
 class MainActivity : AppCompatActivity() {
+    
+    private val user = User(1, "Dinar", 22, Type.FULL)
+    private val user1 = User(2, "Oleg", 20, Type.FULL)
+    private val user2 = User(3, "Misha", 18, Type.DEMO)
+    private val user3 = User(4, "Dima", 25, Type.DEMO)
+    private val user4 = User(5, "Sasha", 24, Type.FULL)
+    private val user5 = User(6, "Ura", 16, Type.DEMO)
+    private val userList = mutableListOf(user, user1, user2, user3)
+    
+    private val authCheck = object : AuthCallback {
+        override fun authSuccess() {
+            Log.d("Info", "Пользователь авторизован")
+        }
+        
+        override fun authFailed() {
+            Log.d("Info", "Ошибка! Пользователь неавторизован")
+        }
+    }
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        
+        Log.d("Info", "Time: ${user.startTime}")
+        Thread.sleep(1000)
+        Log.d("Info", "Time: ${user.startTime}")
+        
+        userList.apply {
+            add(user4)
+            add(user5)
+        }
+        
+        val newList = userList.filter { it.type == Type.FULL }
+        Log.d("Info", "$newList")
+        val nameList = userList.map { it.name }
+        Log.d("Info", "$nameList")
+        Log.d("Info", "${nameList.first()} и ${nameList.last()}")
+        
+        try {
+            user5.check()
+        } catch (e: Exception) {
+            e.message?.let { Log.d("Info", it) }
+        }
+        
+        auth(user) {
+            updateCache()
+        }
+        
+        doAction(Registration)
+        doAction(Login(user))
+        doAction(Logout)
+    }
+    
+    private fun doAction(action: Action) {
+        when (action) {
+            is Registration -> Log.d("Info", "Registration...")
+            is Login -> auth(user) {
+                updateCache()
+            }
+            else -> Log.d("Info", "Logout...")
+            
+        }
+    }
+    
+    private fun User.check() {
+        if (this.age < 18) throw IllegalArgumentException("${this.name} очень молод")
+        else Log.d("Info", "${this.name} старше 18. Ему ${this.age} лет")
+    }
+    
+    private inline fun auth(user : User, updateCache: () -> Unit) {
+        try {
+            user.check()
+            authCheck.authSuccess()
+            updateCache()
+        } catch (e : Exception) {
+            e.message?.let { Log.d("Info", it) }
+        }
+        
+    }
+    
+    private fun updateCache() {
+        Log.d("Info", "Кэш обновлен")
     }
 }
