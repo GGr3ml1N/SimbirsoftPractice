@@ -44,14 +44,16 @@
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways">
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:menu="@menu/profile_menu"
+                app:titleMargin="0dp">
 
                 <TextView
                     android:id="@+id/textView"
                     style="@style/TextStyle2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:text="@string/profile"
                     android:textColor="@color/white"
                     android:textSize="@dimen/title_size"
@@ -68,17 +70,15 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-
-
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         tools:ignore="SpeakableTextPresentCheck">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:isScrollContainer="true"
-            tools:context=".ProfileActivity">
+            tools:context=".ui.ProfileActivity">
 
             <TextView
                 android:id="@+id/tv_name"
@@ -191,67 +191,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:padding="0dp"
-                app:cardCornerRadius="40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_your_friends">
-
-                <ImageView
-                    android:id="@+id/im_friend1"
-                    android:layout_width="@dimen/friend_card_size"
-                    android:layout_height="@dimen/friend_card_size"
-                    app:srcCompat="@drawable/friend1" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView">
-
-                <ImageView
-                    android:id="@+id/im_friend2"
-                    android:layout_width="@dimen/friend_card_size"
-                    android:layout_height="@dimen/friend_card_size"
-                    app:srcCompat="@drawable/friend2" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="132dp"
-                app:cardCornerRadius="40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_your_friends">
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    app:srcCompat="@drawable/friend3" />
-            </androidx.cardview.widget.CardView>
-
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="236dp"
                 android:background="@color/cool_grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
+                app:layout_constraintTop_toBottomOf="@+id/rc_friends" />
 
             <Button
                 android:id="@+id/button"
@@ -259,52 +206,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="92dp"
                 android:gravity="center"
                 android:text="@string/exit_button"
                 android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view2" />
 
-            <TextView
-                android:id="@+id/tv_friend1_name"
-                style="@style/TextStyle8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/sample_friend1"
-                android:textColor="@color/black"
-                android:textSize="@dimen/info_text_size"
-                app:layout_constraintBottom_toBottomOf="@+id/cardView"
-                app:layout_constraintStart_toEndOf="@+id/cardView"
-                app:layout_constraintTop_toTopOf="@+id/cardView" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_friends"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/view2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_your_friends"
+                tools:ignore="TextSizeCheck">
 
-            <TextView
-                android:id="@+id/tv_friend2_name"
-                style="@style/TextStyle8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/sample_friend2"
-                android:textColor="@color/black"
-                android:textSize="@dimen/info_text_size"
-                app:layout_constraintBottom_toBottomOf="@+id/cardView2"
-                app:layout_constraintStart_toEndOf="@+id/cardView2"
-                app:layout_constraintTop_toTopOf="@+id/cardView2" />
-
-            <TextView
-                android:id="@+id/tv_friend3_name"
-                style="@style/TextStyle8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/sample_friend3"
-                android:textColor="@color/black"
-                android:textSize="@dimen/info_text_size"
-                app:layout_constraintBottom_toBottomOf="@+id/cardView3"
-                app:layout_constraintStart_toEndOf="@+id/cardView3"
-                app:layout_constraintTop_toTopOf="@+id/cardView3"
-                app:layout_constraintVertical_bias="0.5" />
+            </androidx.recyclerview.widget.RecyclerView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -316,6 +239,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_view" />
 
 
