@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">Practice</string>
+    <!-- activity_splash_screen -->
+    <string name="loading">Загрузка…</string>
+
+    <!-- activity_profile -->
+    <string name="app_name">Хочу помочь</string>
+    <string name="date_of_birthday">Дата рождения</string>
+    <string name="field_of_activity">Сфера деятельности</string>
+    <string name="push_up_notifications">Получать push-уведомления</string>
+    <string name="your_friends">Ваши друзья</string>
+    <string name="exit_button">Выйти из аккаунта</string>
+
+    <string name="sample_name">Константинов Денис</string>
+    <string name="sample_date">01 февраля 1980</string>
+    <string name="sample_activity">Хирургия, травмотология</string>
+    <string name="sample_friend1">Дмитрий Валерьевич</string>
+    <string name="sample_friend2">Евгений Александров</string>
+    <string name="sample_friend3">Виктор Кузнецов</string>
+
+    <!-- bottom_menu_navigation -->
+    <string name="news">Новости</string>
+    <string name="search">Поиск</string>
+    <string name="help">Помочь</string>
+    <string name="history">История</string>
+    <string name="profile">Профиль</string>
+
+    <!-- profile_menu -->
+    <string name="edit">Редактировать</string>
 </resources>
